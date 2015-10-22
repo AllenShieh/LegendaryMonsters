@@ -23,7 +23,7 @@ bool MenuScene::init()
 	this->addChild(MenuBackground);
 
 	//´´½¨²Ëµ¥
-	CCMenuItemImage * item4 = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this, menu_selector(MenuScene::menuCallback));
+	CCMenuItemImage * item4 = CCMenuItemImage::create("2.png", "2.png", this, menu_selector(MenuScene::menuCallback));
 	item4->setPosition(ccp(visibleSize.width*0.9, visibleSize.width*0.5));
 	auto menu = CCMenu::create(item4, NULL);
 	menu->setAnchorPoint(CCPointZero);

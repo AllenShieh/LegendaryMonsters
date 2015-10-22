@@ -9,11 +9,6 @@ class GameScene : public cocos2d::CCLayer, public b2ContactListener
 {
 private:
 	B2Sprite * ship_2;
-	float frameRotate;
-	B2Sprite *b1;
-	B2Sprite *b2;
-	B2Sprite *b3;
-	B2Sprite *b4;
 	B2Sprite *g1;
 	B2Sprite *g2;
 	B2Sprite *g3;
@@ -24,13 +19,29 @@ private:
 	CCLabelTTF * label;
 	int score;
 
-	float getR;
-	float diffR;
-	float newR;
-
 	void update(float dt);
 	void BeginContact(b2Contact* contact);
 	void ccTouchesBegan(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
+
+	B2Sprite * f1;
+	B2Sprite * f2;
+	B2Sprite * f3;
+	B2Sprite * f4;
+	double fracdiff;
+
+	float f_x[4];
+	float f_y[4];
+	short sit[4];
+
+	B2Sprite * s1;
+	bool s1_exist;
+	bool s1_delete;
+	B2Sprite * s2;
+	bool s2_exist;
+	bool s2_delete;
+	B2Sprite * s3;
+	bool s3_exist;
+	bool s3_delete;
 
 public:
 	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -47,7 +58,6 @@ public:
 
 	virtual void didAccelerate(CCAcceleration* pAccelerationValue);
 
-	void setR(){ getR = 0; }
 };
 
 #endif
