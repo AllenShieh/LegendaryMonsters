@@ -246,8 +246,10 @@ bool GameScene::init()
 	bodyDef.position = b2Vec2(winSize.width / 2.5f / RATIO, winSize.height / 3.0f / RATIO);
 	b2Body *shipBody = mWorld->CreateBody(&bodyDef);
 	CCSize shipSize = ship_2->getContentSize();
-	b2PolygonShape shipShape;
-	shipShape.SetAsBox(shipSize.width / 2.0f / RATIO, shipSize.height / 2.0f / RATIO);
+	//b2PolygonShape shipShape;
+	b2CircleShape shipShape;
+	shipShape.m_radius = shipSize.height / 2.0f / RATIO;
+	//shipShape.SetAsBox(shipSize.width / 2.0f / RATIO, shipSize.height / 2.0f / RATIO);
 	b2FixtureDef shipFixtureDef;
 	shipFixtureDef.shape = &shipShape;
 	shipFixtureDef.density = 0.1f;
