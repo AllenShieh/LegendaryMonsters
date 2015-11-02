@@ -54,7 +54,7 @@ bool IntroScene::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent
 	if (IntroScene::currPic == 5){
 		auto menu = MenuScene::scene();
 		CCDirector::sharedDirector()->replaceScene(CCTransitionCrossFade::create(0.3f, menu));
-		IntroScene::currPic == 0;
+		IntroScene::currPic = 0;
 	}
 	else{
 		CCFadeOut * fadeout = CCFadeOut::create(1);
