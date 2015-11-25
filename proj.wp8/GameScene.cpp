@@ -24,10 +24,16 @@ CCScene* GameScene::scene()
 void GameScene::update(float dt){
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 
+	float surprise[4] = { 0 };
+	for (int i = 0; i < 4; i++){
+		surprise[i] = float(rand() - RAND_MAX / 2) / float(RAND_MAX) * 10.0f;
+	}
+	float diff = 0;
 	//---update the four points---
 	for (int i = 0; i < 4; i++){
+		diff = fracdiff + surprise[i];
 		if (sit[i] == 0){
-			f_x[i] -= fracdiff;
+			f_x[i] -= diff;
 			if (f_x[i] < 0){
 				sit[i] = 1;
 				f_x[i] = 0;
@@ -38,7 +44,7 @@ void GameScene::update(float dt){
 			}
 		}
 		else if (sit[i] == 1){
-			f_y[i] -= fracdiff;
+			f_y[i] -= diff;
 			if (f_y[i] < 0){
 				sit[i] = 2;
 				f_y[i] = 0;
@@ -49,7 +55,7 @@ void GameScene::update(float dt){
 			}
 		}
 		else if (sit[i] == 2){
-			f_x[i] += fracdiff;
+			f_x[i] += diff;
 			if (f_x[i] > winSize.width){
 				sit[i] = 3;
 				f_x[i] = winSize.width;
@@ -60,7 +66,7 @@ void GameScene::update(float dt){
 			}
 		}
 		else if (sit[i] == 3){
-			f_y[i] += fracdiff;
+			f_y[i] += diff;
 			if (f_y[i] > winSize.height){
 				sit[i] = 0;
 				f_y[i] = winSize.height;
@@ -422,7 +428,7 @@ void GameScene::didAccelerate(CCAcceleration* pAccelerationValue){
 }
 
 void GameScene::BeginContact(b2Contact *contact){
-	if ((contact->GetFixtureA()->GetBody()->GetUserData() == g4&&contact->GetFixtureB()->GetBody()->GetUserData() == ship_2) ||
+	/*if ((contact->GetFixtureA()->GetBody()->GetUserData() == g4&&contact->GetFixtureB()->GetBody()->GetUserData() == ship_2) ||
 		(contact->GetFixtureB()->GetBody()->GetUserData() == g4&&contact->GetFixtureA()->GetBody()->GetUserData() == ship_2)){
 		CCScene *rScene = CCScene::create();
 		ResultScene *layer = ResultScene::create();
@@ -441,7 +447,7 @@ void GameScene::BeginContact(b2Contact *contact){
 		layer->setResult(false);
 		rScene->addChild(layer);
 		CCDirector::sharedDirector()->replaceScene(CCTransitionCrossFade::create(0.3f, rScene));
-	}
+	}*/
 	if (s1_exist){
 		if ((contact->GetFixtureA()->GetBody()->GetUserData() == s1&&contact->GetFixtureB()->GetBody()->GetUserData() == ship_2) ||
 			(contact->GetFixtureB()->GetBody()->GetUserData() == s1&&contact->GetFixtureA()->GetBody()->GetUserData() == ship_2)){
