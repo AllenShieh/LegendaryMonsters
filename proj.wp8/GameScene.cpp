@@ -80,19 +80,19 @@ void GameScene::update(float dt){
 
 	f1->setPosition(ccp((f_x[0] + f_x[1]) / 2.0f, (f_y[0] + f_y[1]) / 2.0f));
 	f1->setRotation(atan((f_y[0] - f_y[1]) / (f_x[0] - f_x[1]))*180.0 / 3.14);
-	f1->setScale(sqrt((f_y[0] - f_y[1])*(f_y[0] - f_y[1]) + (f_x[0] - f_x[1])*(f_x[0] - f_x[1])) / 1415.0f);
+	f1->setScale(sqrt((f_y[0] - f_y[1])*(f_y[0] - f_y[1]) + (f_x[0] - f_x[1])*(f_x[0] - f_x[1])) / 1948.0f);
 
 	f2->setPosition(ccp((f_x[1] + f_x[2]) / 2.0f, (f_y[1] + f_y[2]) / 2.0f));
 	f2->setRotation(atan((f_y[1] - f_y[2]) / (f_x[1] - f_x[2]))*180.0 / 3.14);
-	f2->setScale(sqrt((f_y[1] - f_y[2])*(f_y[1] - f_y[2]) + (f_x[1] - f_x[2])*(f_x[1] - f_x[2])) / 1415.0f);
+	f2->setScale(sqrt((f_y[1] - f_y[2])*(f_y[1] - f_y[2]) + (f_x[1] - f_x[2])*(f_x[1] - f_x[2])) / 1948.0f);
 
 	f3->setPosition(ccp((f_x[2] + f_x[3]) / 2.0f, (f_y[2] + f_y[3]) / 2.0f));
 	f3->setRotation(atan((f_y[2] - f_y[3]) / (f_x[2] - f_x[3]))*180.0 / 3.14);
-	f3->setScale(sqrt((f_y[2] - f_y[3])*(f_y[2] - f_y[3]) + (f_x[2] - f_x[3])*(f_x[2] - f_x[3])) / 1415.0f);
+	f3->setScale(sqrt((f_y[2] - f_y[3])*(f_y[2] - f_y[3]) + (f_x[2] - f_x[3])*(f_x[2] - f_x[3])) / 1948.0f);
 
 	f4->setPosition(ccp((f_x[3] + f_x[0]) / 2.0f, (f_y[3] + f_y[0]) / 2.0f));
 	f4->setRotation(atan((f_y[3] - f_y[0]) / (f_x[3] - f_x[0]))*180.0 / 3.14);
-	f4->setScale(sqrt((f_y[3] - f_y[0])*(f_y[3] - f_y[0]) + (f_x[3] - f_x[0])*(f_x[3] - f_x[0])) / 1415.0f);
+	f4->setScale(sqrt((f_y[3] - f_y[0])*(f_y[3] - f_y[0]) + (f_x[3] - f_x[0])*(f_x[3] - f_x[0])) / 1948.0f);
 	//---
 
 	g1->setPosition(ccp((f_x[0] + f_x[1]) / 2.0f, (f_y[0] + f_y[1]) / 2.0f));
@@ -140,7 +140,7 @@ bool GameScene::init()
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
-	auto * GameBackground = CCSprite::create("bg2.jpg");
+	auto * GameBackground = CCSprite::create("dirt.png");
 	GameBackground->setPosition(ccp(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->addChild(GameBackground);
 
@@ -180,10 +180,10 @@ bool GameScene::init()
 	mWorld->SetContactListener(this);
 
 	//---bigger edges~
-	f1 = B2Sprite::create("bian3.png");
+	f1 = B2Sprite::create("bian1.png");
 	b2BodyDef f1Frame;
 	f1Frame.type = b2_staticBody;
-	f1Frame.position = b2Vec2(winSize.width / 2.0f, winSize.height - 20);
+	f1Frame.position = b2Vec2(winSize.width / 2.0f, winSize.height - 60);
 	f1Frame.angle = 0;
 	b2Body *f1Body = mWorld->CreateBody(&f1Frame);
 	CCSize f1Size = f1->getContentSize();
@@ -196,7 +196,7 @@ bool GameScene::init()
 	f1->setB2Body(f1Body);
 	this->addChild(f1);
 
-	f2 = B2Sprite::create("bian3.png");
+	f2 = B2Sprite::create("bian1.png");
 	b2BodyDef f2Frame;
 	f2Frame.type = b2_staticBody;
 	f2Frame.position = b2Vec2(20, winSize.height / 2.0f);
@@ -212,7 +212,7 @@ bool GameScene::init()
 	f2->setB2Body(f2Body);
 	this->addChild(f2);
 
-	f3 = B2Sprite::create("bian3.png");
+	f3 = B2Sprite::create("bian1.png");
 	b2BodyDef f3Frame;
 	f3Frame.type = b2_staticBody;
 	f3Frame.position = b2Vec2(winSize.width / 2.0f, 20);
@@ -228,7 +228,7 @@ bool GameScene::init()
 	f3->setB2Body(f3Body);
 	this->addChild(f3);
 
-	f4 = B2Sprite::create("bian3.png");
+	f4 = B2Sprite::create("bian1.png");
 	b2BodyDef f4Frame;
 	f4Frame.type = b2_staticBody;
 	f4Frame.position = b2Vec2(winSize.width - 20, winSize.height / 2.0f);
@@ -326,7 +326,7 @@ bool GameScene::init()
 	g3->setB2Body(g3Body);
 	this->addChild(g3);
 
-	g4 = B2Sprite::create("gate.png");
+	g4 = B2Sprite::create("stars.png");
 	b2BodyDef g4Frame;
 	g4Frame.type = b2_staticBody;
 	g4Frame.position = b2Vec2((f_x[3] + f_x[0]) / 2.0f, (f_y[3] + f_y[0]) / 2.0f);
